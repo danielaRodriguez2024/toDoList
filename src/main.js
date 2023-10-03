@@ -1,27 +1,24 @@
-const taskForm = document.getElementById("task-form");
-const taskList = document.getElementById("task-list");
-
-taskForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    const taskTitle = document.getElementById("task-title").value;
-    const taskDescription = document.getElementById("task-description").value;
-
-    if (taskTitle.trim() === "") {
-        alert("El título de la tarea no puede estar vacío.");
-        return;
+// Definimos una clase para poder agregar la tarea
+class Task {
+    constructor(description) {
+        this.description = description;
+        this.completed = false;
     }
 
-    const taskItem = document.createElement("li");
-    taskItem.innerHTML = `
-        <h3>${taskTitle}</h3>
-        <p>${taskDescription}</p>
-        <button class="complete-button">Completar</button>
-        <button class="delete-button">Eliminar</button>
-    `;
+    toggleCompleted() {
+        this.completed = !this.completed;
+    }
+}
 
-    taskList.appendChild(taskItem);
-
-    // Limpiar el formulario
-    taskForm.reset();
-});
+// Función para poner las tareas pendientes
+function addTask() {
+    const taskInput = document.getElementById('taskInput');
+    const taskDescription = taskInput.value.trim();
+    
+    if (taskDescription !== '') {
+        const task = new Task(taskDescription);
+        tasks.push(task);
+        renderTasks();
+        taskInput.value = '';
+    }
+}
