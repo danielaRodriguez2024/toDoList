@@ -22,5 +22,10 @@ git clone https://git@github.com:usuarioPerez2024/toDoList.git
 # Navega al directorio del proyecto
 cd toDoList
 
+```
+
+## Avances 
+- Nota 10
+
 # Instala las dependencias
 npm install
