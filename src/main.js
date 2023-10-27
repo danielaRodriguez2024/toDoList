@@ -96,6 +96,7 @@ function createTaskItem(task, index, status) {
     if (task.completed) {
         taskText.classList.add('line-through');
     }
+    
     return taskItem;
 }
 
