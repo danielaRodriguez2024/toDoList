@@ -87,3 +87,23 @@ function createTaskItem(task, index, status) {
         renderTasks();
     });
 
+    taskActions.appendChild(completeButton);
+    taskActions.appendChild(deleteButton);
+
+    taskItem.appendChild(taskText);
+    taskItem.appendChild(taskActions);
+
+    if (task.completed) {
+        taskText.classList.add('line-through');
+    }
+
+    return taskItem;
+}
+
+const tasks = [];
+const completedTasks = [];
+const addTaskButton = document.getElementById('addTask');
+addTaskButton.addEventListener('click', addTask);
+
+// Inicialmente, renderizamos las tareas existentes
+renderTasks();
