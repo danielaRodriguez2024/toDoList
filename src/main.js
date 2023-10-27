@@ -48,3 +48,29 @@ function renderTasks() {
         completedTaskList.appendChild(taskItem);
     });
 }
+
+// Función auxiliar para crear un elemento de tarea
+function createTaskItem(task, index, status) {
+    const taskItem = document.createElement('li');
+    taskItem.className = 'flex justify-between items-center bg-white px-4 py-2 mb-2 rounded';
+
+    const taskText = document.createElement('span');
+    taskText.textContent = `[${status}] ${task.description}`;
+
+    const taskActions = document.createElement('div');
+
+    const completeButton = document.createElement('button');
+    completeButton.textContent = 'Completar';
+    completeButton.className = 'bg-green-500 text-white px-2 py-1 rounded mr-2';
+    completeButton.addEventListener('click', () => {
+        task.toggleCompleted();
+        if (status === 'Pendiente') {
+            completeTask(index);
+        } else {
+            // Si está en la lista de completadas, deshacer la acción
+            task.toggleCompleted();
+            tasks.push(task);
+            completedTasks.splice(index, 1);
+        }
+        renderTasks();
+    });
